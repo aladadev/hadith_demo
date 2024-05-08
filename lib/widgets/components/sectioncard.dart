@@ -25,7 +25,7 @@ class SectionCard extends StatelessWidget {
               title,
               style: TextStyle(
                   color: Appconstants.appGreenColor,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w700,
                   fontSize: 16),
             ),
             preface.isEmpty

@@ -31,6 +31,7 @@ class HadithCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 HexagonWidget.pointy(
                   cornerRadius: 10,
@@ -73,13 +74,10 @@ class HadithCard extends StatelessWidget {
                   ),
                   child: Text(
                     hadithCategory,
-                    style: const TextStyle(fontSize: 10, color: Colors.white),
+                    style: const TextStyle(fontSize: 12, color: Colors.white),
                   ),
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.more_vert_outlined),
-                ),
+                const Icon(Icons.more_vert_outlined),
               ],
             ),
             const SizedBox(
