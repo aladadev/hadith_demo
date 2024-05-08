@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hadith_demo/controllers/book_controller.dart';
 import 'package:hadith_demo/controllers/hadith_controller.dart';
 import 'package:hadith_demo/controllers/section_controller.dart';
 
@@ -31,54 +30,14 @@ class HadithDetails extends StatelessWidget {
             ],
           ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
+        body: const Padding(
+          padding: EdgeInsets.all(8.0),
           child: SingleChildScrollView(
             child: Column(
-              children: [
-                SizedBox(height: 300, child: HadithList()),
-                SizedBox(height: 500, child: BooksList()),
-              ],
+              children: [],
             ),
           ),
         ));
-  }
-}
-
-class BooksList extends StatelessWidget {
-  final BooksController userController = Get.put(BooksController());
-
-  BooksList({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GetX<BooksController>(
-      builder: (controller) => ListView.builder(
-        itemCount: controller.books.length,
-        itemBuilder: (context, index) {
-          final book = controller.books[index];
-          return Column(
-            children: [
-              Text(book.title),
-              const SizedBox(
-                height: 20,
-              ),
-              Text(
-                book.title_ar,
-                style: const TextStyle(fontSize: 50),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Text(
-                book.book_descr,
-                style: const TextStyle(fontSize: 20),
-              ),
-            ],
-          );
-        },
-      ),
-    );
   }
 }
 
@@ -129,10 +88,11 @@ class HadithList extends StatelessWidget {
           final hadith = controller.hadith[index];
           return Column(
             children: [
-              Text(hadith.hadith_id.toString()),
+              Text(hadith.narrator),
               const SizedBox(
                 height: 20,
               ),
+              Text(hadith.book_name),
               const SizedBox(
                 height: 20,
               ),

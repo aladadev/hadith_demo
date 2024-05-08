@@ -20,7 +20,7 @@ class HadithController extends GetxController {
     }
   }
 
-  List<Hadith> get hadith => _hadith.value;
+  List<Hadith> get hadith => _hadith;
 }
 
 // Similar controllers for other tables

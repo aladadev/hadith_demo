@@ -3,8 +3,20 @@ import 'package:hadith_demo/constants/colors.dart';
 import 'package:hexagon/hexagon.dart';
 
 class HadithCard extends StatelessWidget {
+  final String title;
+  final int hadithNumber;
+  final String hadithCategory;
+  final String arabicText;
+  final String narrator;
+  final String banglaText;
   const HadithCard({
     super.key,
+    required this.title,
+    required this.hadithNumber,
+    required this.hadithCategory,
+    required this.arabicText,
+    required this.narrator,
+    required this.banglaText,
   });
 
   @override
@@ -28,16 +40,16 @@ class HadithCard extends StatelessWidget {
                 const SizedBox(
                   width: 8,
                 ),
-                const Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Sahih Bukhari'),
-                    Text('Hadith: 1'),
+                    const Text('Sahih Bukhari'),
+                    Text(hadithNumber.toString()),
                   ],
                 ),
                 const Spacer(),
-                const Chip(
-                  label: Text('Sahoh Hadith'),
+                Chip(
+                  label: Text(hadithCategory),
                 ),
                 IconButton(
                   onPressed: () {},
@@ -48,21 +60,15 @@ class HadithCard extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            const Text(
-                'ناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء. العديد من برامح النشر المكتبي وبرامح تحرير صفحات الويب تستخدم لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال "lorem ipsum" في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوري'),
+            Text(arabicText),
             const SizedBox(
               height: 16,
             ),
             Text(
-              'অংশ অংশভাক আঁইশ ইঁচড়েপাকা ঈক্ষণ ঈদৃক অংশভাগী জওয়ান অংশাঙ্কিত ইউক্যালিপটাস অংশাবতার হালহদিশ পিতৃতর্পণ টকানো ঈক্ষিত জগজ্জন :',
+              '$narrator :',
               style: TextStyle(color: Appconstants.appGreenColor),
             ),
-            const Text(
-                '''অংশ অংশভাক আঁইশ ইঁচড়েপাকা ঈক্ষণ ঈদৃক অংশভাগী জওয়ান অংশাঙ্কিত ইউক্যালিপটাস অংশাবতার হালহদিশ পিতৃতর্পণ টকানো ঈক্ষিত জগজ্জন তকতনামা আঁকুবাঁকু পঁইছা
-      জগঝপ্প পঁহুছা দ্রাবিড়ী আঁকুড়ি ঈদৃক জগদম্বা টঙ্ক অংশিন্‌ জগদ্গৌরী আঁচা তকরার তিলপিটালি গজ-দাঁত অংশু ঈপ্সনীয় পইতা শংকরাভরণ হংসগমন পকড় অংশুধর ঈপ্সু ঈর্ষী তকতনামা আঁকুবাঁকু পঁইছা
-      জগঝপ্প পঁহুছা দ্রাবিড়ী আঁকুড়ি ঈদৃক জগদম্বা টঙ্ক অংশিন্‌ জগদ্গৌরী আঁচা তকরার তিলপিটালি গজ-দাঁত অংশু ঈপ্সনীয় পইতা শংকরাভরণ হংসগমন পকড় অংশুধর ঈপ্সু ঈর্ষী তকতনামা আঁকুবাঁকু পঁইছা
-      জগঝপ্প পঁহুছা দ্রাবিড়ী আঁকুড়ি ঈদৃক জগদম্বা টঙ্ক অংশিন্‌ জগদ্গৌরী আঁচা তকরার তিলপিটালি গজ-দাঁত অংশু ঈপ্সনীয় পইতা শংকরাভরণ হংসগমন পকড় অংশুধর ঈপ্সু ঈর্ষী
-      ''')
+            Text(banglaText)
           ],
         ),
       ),
