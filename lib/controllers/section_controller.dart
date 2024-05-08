@@ -21,7 +21,7 @@ class SectionController extends GetxController {
     }
   }
 
-  List<Section> get section => _section.value;
+  List<Section> get section => _section;
 }
 
 // Similar controllers for other tables

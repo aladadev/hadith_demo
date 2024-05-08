@@ -23,33 +23,50 @@ class HadithCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
             Row(
               children: [
                 HexagonWidget.pointy(
                   cornerRadius: 10,
-                  width: 50,
+                  width: 40,
                   color: const Color(0xFF6EBC66),
                   child: const Text(
                     'B',
-                    style: TextStyle(fontWeight: FontWeight.w700),
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700, color: Colors.white),
                   ),
                 ),
                 const SizedBox(
-                  width: 8,
+                  width: 12,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Sahih Bukhari'),
-                    Text(hadithNumber.toString()),
+                    const Text(
+                      'সহীহ বুখারী',
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(
+                      height: 4,
+                    ),
+                    Text(
+                      'হাদিস: $hadithNumber',
+                      style: TextStyle(
+                          color: Appconstants.appGreenColor,
+                          fontWeight: FontWeight.w600),
+                    ),
                   ],
                 ),
                 const Spacer(),
                 Chip(
-                  label: Text(hadithCategory),
+                  side: BorderSide.none,
+                  backgroundColor: Appconstants.appGreenColor,
+                  label: Text(
+                    hadithCategory,
+                    style: const TextStyle(color: Colors.white, fontSize: 10),
+                  ),
                 ),
                 IconButton(
                   onPressed: () {},
