@@ -20,8 +20,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Hadith Demo',
       theme: ThemeData(
+        fontFamily: 'BanglaFont',
         scaffoldBackgroundColor: Colors.grey.shade300,
         appBarTheme: const AppBarTheme(
           actionsIconTheme: IconThemeData(color: Colors.white),

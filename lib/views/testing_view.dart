@@ -33,44 +33,49 @@ class Testing extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            // const Text('Testing'),
-            Obx(
-              () => hadithHelper.isEmpty
-                  ? const Center(child: CircularProgressIndicator())
-                  : Expanded(
-                      child: ListView.builder(
-                        itemCount: hadithController.hadith.length,
-                        itemBuilder: (context, index) {
-                          final hadith = hadithHelper[index];
-                          final matchingSections = sectionHelper.where(
-                              (section) =>
-                                  section.section_id == hadith.section_id);
-                          final section = matchingSections.first;
-                          print('matching **** section: $section');
-                          return Column(
-                            children: [
-                              sectionHelper.isEmpty
-                                  ? const SizedBox()
-                                  : SectionCard(
-                                      title: section.title,
-                                      preface: section.preface,
-                                      number: section.number),
-                              HadithCard(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              // const Text('Testing'),
+              Obx(
+                () => hadithHelper.isEmpty
+                    ? const Center(child: CircularProgressIndicator())
+                    : Expanded(
+                        child: ListView.builder(
+                          itemCount: hadithController.hadith.length,
+                          itemBuilder: (context, index) {
+                            final hadith = hadithHelper[index];
+                            final matchingSections = sectionHelper.where(
+                                (section) =>
+                                    section.section_id == hadith.section_id);
+                            final section = matchingSections.first;
+                            print('matching **** section: $section');
+                            return Column(
+                              children: [
+                                sectionHelper.isEmpty
+                                    ? const SizedBox()
+                                    : SectionCard(
+                                        title: section.title,
+                                        preface: section.preface,
+                                        number: section.number),
+                                HadithCard(
                                   title: 'Sahih Bukhari',
                                   hadithNumber: hadith.hadith_id,
                                   hadithCategory: hadith.grade,
                                   arabicText: hadith.ar,
                                   narrator: hadith.narrator,
-                                  banglaText: hadith.bn),
-                            ],
-                          );
-                        },
+                                  banglaText: hadith.bn,
+                                  note: hadith.note,
+                                ),
+                              ],
+                            );
+                          },
+                        ),
                       ),
-                    ),
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );

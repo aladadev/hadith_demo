@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:hadith_demo/constants/colors.dart';
 import 'package:hexagon/hexagon.dart';
@@ -9,6 +10,7 @@ class HadithCard extends StatelessWidget {
   final String arabicText;
   final String narrator;
   final String banglaText;
+  final String note;
   const HadithCard({
     super.key,
     required this.title,
@@ -17,14 +19,16 @@ class HadithCard extends StatelessWidget {
     required this.arabicText,
     required this.narrator,
     required this.banglaText,
+    required this.note,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(12.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
@@ -60,12 +64,16 @@ class HadithCard extends StatelessWidget {
                   ],
                 ),
                 const Spacer(),
-                Chip(
-                  side: BorderSide.none,
-                  backgroundColor: Appconstants.appGreenColor,
-                  label: Text(
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: Appconstants.appGreenColor,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
                     hadithCategory,
-                    style: const TextStyle(color: Colors.white, fontSize: 10),
+                    style: const TextStyle(fontSize: 10, color: Colors.white),
                   ),
                 ),
                 IconButton(
@@ -77,15 +85,35 @@ class HadithCard extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            Text(arabicText),
+            Text(
+              arabicText,
+              style: const TextStyle(fontFamily: 'ArabicFont', fontSize: 24),
+            ),
             const SizedBox(
               height: 16,
             ),
             Text(
-              '$narrator :',
-              style: TextStyle(color: Appconstants.appGreenColor),
+              '$narrator থেকে বর্ণিত:',
+              style: TextStyle(color: Appconstants.appGreenColor, fontSize: 16),
             ),
-            Text(banglaText)
+            const SizedBox(
+              height: 8,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: Text(
+                banglaText,
+                style: const TextStyle(fontSize: 16),
+              ),
+            ),
+            note.isEmpty
+                ? const SizedBox()
+                : Column(
+                    children: [
+                      const Divider(),
+                      Text(note),
+                    ],
+                  ),
           ],
         ),
       ),

@@ -25,7 +25,8 @@ class SectionCard extends StatelessWidget {
               title,
               style: TextStyle(
                   color: Appconstants.appGreenColor,
-                  fontWeight: FontWeight.w500),
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16),
             ),
             preface.isEmpty
                 ? const SizedBox()
@@ -36,7 +37,8 @@ class SectionCard extends StatelessWidget {
                         preface,
                         style: const TextStyle(
                             color: Color.fromARGB(221, 43, 42, 42),
-                            fontWeight: FontWeight.w200),
+                            fontWeight: FontWeight.w200,
+                            fontSize: 14),
                       ),
                     ],
                   ),
