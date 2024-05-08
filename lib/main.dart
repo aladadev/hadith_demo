@@ -7,6 +7,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     const GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MyApp(),
     ),
   );

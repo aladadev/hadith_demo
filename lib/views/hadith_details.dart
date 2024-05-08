@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hexagon/hexagon.dart';
+import 'package:get/get.dart';
+import 'package:hadith_demo/controllers/book_controller.dart';
+import 'package:hadith_demo/controllers/hadith_controller.dart';
+import 'package:hadith_demo/controllers/section_controller.dart';
 
 class HadithDetails extends StatelessWidget {
   const HadithDetails({super.key});
@@ -30,70 +33,112 @@ class HadithDetails extends StatelessWidget {
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              const SectionCard(),
-              Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Row(
-                    children: [
-                      HexagonWidget.pointy(
-                        cornerRadius: 10,
-                        width: 50,
-                        color: const Color(0xFF6EBC66),
-                        child: const Text(
-                          'B',
-                          style: TextStyle(fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Sahih Bukhari'),
-                          Text('Hadith: 1'),
-                        ],
-                      ),
-                      const Spacer(),
-                      const Chip(
-                        label: Text('Sahoh Hadith'),
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.more_vert_outlined),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: 300, child: HadithList()),
+                SizedBox(height: 500, child: BooksList()),
+              ],
+            ),
           ),
         ));
   }
 }
 
-class SectionCard extends StatelessWidget {
-  const SectionCard({
-    super.key,
-  });
+class BooksList extends StatelessWidget {
+  final BooksController userController = Get.put(BooksController());
+
+  BooksList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Card(
-      child: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Text(
-                '1/1 schapter: allahr rasul sdasdsd  asdsad asdasd  sadsd as dsadas ds asd'),
-            Divider(),
-            Text(
-                '''Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five ce'''),
-          ],
-        ),
+    return GetX<BooksController>(
+      builder: (controller) => ListView.builder(
+        itemCount: controller.books.length,
+        itemBuilder: (context, index) {
+          final book = controller.books[index];
+          return Column(
+            children: [
+              Text(book.title),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                book.title_ar,
+                style: const TextStyle(fontSize: 50),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                book.book_descr,
+                style: const TextStyle(fontSize: 20),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+}
+
+class SectionList extends StatelessWidget {
+  final SectionController userController = Get.put(SectionController());
+
+  SectionList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GetX<SectionController>(
+      builder: (controller) => ListView.builder(
+        itemCount: controller.section.length,
+        itemBuilder: (context, index) {
+          final section = controller.section[index];
+          return Column(
+            children: [
+              Text(section.book_name),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                section.title,
+                style: const TextStyle(fontSize: 50),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+}
+
+class HadithList extends StatelessWidget {
+  final userController = Get.put(HadithController());
+
+  HadithList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GetX<HadithController>(
+      builder: (controller) => ListView.builder(
+        itemCount: controller.hadith.length,
+        itemBuilder: (context, index) {
+          final hadith = controller.hadith[index];
+          return Column(
+            children: [
+              Text(hadith.hadith_id.toString()),
+              const SizedBox(
+                height: 20,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+            ],
+          );
+        },
       ),
     );
   }
